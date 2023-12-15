@@ -33,10 +33,6 @@ def calculate_mu_manual(
     return mu
 
 
-def calculate_gauss_quadrature(func, a: float, b: float) -> float:
-    
-
-
 def integrate_quad(func, a: float, b: float) -> float:
     eps = 1.49e-8
     interval_stack = [(a, b)]

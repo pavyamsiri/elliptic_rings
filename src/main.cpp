@@ -1,14 +1,15 @@
-#include <iostream>
-#include "er_math.hpp"
 #include "er_array.hpp"
+#include "er_math.hpp"
 #include "er_ring.hpp"
+#include <iostream>
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
+    (void)argc;
+    (void)argv;
     ER::Array arr1(10);
     ER::Array arr2(10);
-    for (int i = 0; i < arr1.size(); i++)
-    {
+    for (usize i = 0; i < arr1.size(); i++) {
         arr1[i] = i;
         arr2[i] = i + 1;
     }
@@ -26,8 +27,8 @@ int main(int argc, char *argv[])
     std::cout << "Zero Div: " << zero_div << std::endl;
 
     // Test special functions
-    float64_t m = 0.5;
-    float64_t result = ER::ellipe(m);
+    f64 m = 0.5;
+    f64 result = ER::ellipe(m);
     std::cout << "Elliptic integral of the second kind with m = " << m << ": " << result << std::endl;
 
     // Test rings
@@ -36,3 +37,4 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+

@@ -1,18 +1,23 @@
-#include <cmath>
-#include "er_math.hpp"
 #include "er_ring.hpp"
+#include "er_math.hpp"
+#include <cmath>
 
-float64_t calculate_ellipse_perimeter(float64_t radius, float64_t scale_width, float64_t scale_height)
+f64 calculate_ellipse_perimeter(f64 radius, f64 scale_width, f64 scale_height)
 {
-    float64_t a = std::max(scale_width, scale_height);
-    float64_t b = std::min(scale_width, scale_height);
-    float64_t eccenctricity_squared = 1 - b * b / (a * a);
-    float64_t perimeter = 4 * a * ER::ellipe(eccenctricity_squared);
+    (void)radius;
+    f64 a = std::max(scale_width, scale_height);
+    f64 b = std::min(scale_width, scale_height);
+    f64 eccenctricity_squared = 1 - b * b / (a * a);
+    f64 perimeter = 4 * a * ER::ellipe(eccenctricity_squared);
     return perimeter;
 }
 
-ER::Ring::Ring(float64_t radius, float64_t scale_width, float64_t scale_height, float64_t angle, float64_t mass)
-    : m_radius(radius), m_scale_width(scale_width), m_scale_height(scale_height), m_angle(angle), m_mass(mass)
+ER::Ring::Ring(f64 radius, f64 scale_width, f64 scale_height, f64 angle, f64 mass)
+    : m_radius(radius)
+    , m_scale_width(scale_width)
+    , m_scale_height(scale_height)
+    , m_angle(angle)
+    , m_mass(mass)
 {
     // a
     m_semi_major = std::max(scale_width, scale_height);

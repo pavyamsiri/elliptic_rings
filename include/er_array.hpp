@@ -1,51 +1,47 @@
 #pragma once
-#include <stdexcept>
+#include "er_defines.hpp"
 #include <iostream>
 
-#include "er_defines.hpp"
+namespace ER {
+class ArrayException : public std::exception {
+    using std::exception::what;
 
-namespace ER
-{
-    class ArrayException : public std::exception
+public:
+    char const* what()
     {
-    public:
-        const char *what()
-        {
-            return "The two Arrays are not the same size!";
-        }
-    };
+        return "The two Arrays are not the same size!";
+    }
+};
 
-    class Array
+class Array {
+public:
+    Array(usize size);
+    ~Array();
+    usize size() const;
+    f64 const& operator[](usize index) const;
+    f64& operator[](usize index);
+    friend std::ostream& operator<<(std::ostream& os, Array const& arr)
     {
-    public:
-        Array(size_t size);
-        ~Array();
-        size_t size() const;
-        float64_t const &operator[](size_t index) const;
-        float64_t &operator[](size_t index);
-        friend std::ostream &operator<<(std::ostream &os, const Array &arr)
-        {
-            os << "[";
-            for (size_t i = 0; i < arr.size(); i++)
-            {
-                os << arr[i];
-                if (i < arr.size() - 1)
-                {
-                    os << ", ";
-                }
+        os << "[";
+        for (usize i = 0; i < arr.size(); i++) {
+            os << arr[i];
+            if (i < arr.size() - 1) {
+                os << ", ";
             }
-            os << "]";
-            return os;
         }
+        os << "]";
+        return os;
+    }
 
-        Array operator+(Array const &other) const;
-        Array operator-(Array const &other) const;
-        Array operator*(Array const &other) const;
-        Array operator/(Array const &other) const;
+    Array operator+(Array const& other) const;
+    Array operator-(Array const& other) const;
+    Array operator*(Array const& other) const;
+    Array operator/(Array const& other) const;
 
-    private:
-        float64_t *m_data;
-        size_t m_size;
-        size_t m_capacity;
-    };
+private:
+    f64* m_data;
+    usize m_size;
+    usize m_capacity;
+};
 }
+
