@@ -4,5 +4,6 @@
 namespace ER {
 // Special functions
 f64 ellipe(f64 m);
+f64 ellipk(f64 m);
 }
 

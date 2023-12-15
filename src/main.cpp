@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
     std::cout << "Elliptic integral of the second kind with m = " << m << ": " << result << std::endl;
 
     // Test rings
-    ER::Ring ring(1, 1, 2, 0, 1);
+    ER::Ring ring(1, 0.3, 1);
     std::cout << ring << std::endl;
 
     // Test 3D arrays
